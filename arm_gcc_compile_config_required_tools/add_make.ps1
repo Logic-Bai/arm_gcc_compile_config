@@ -16,5 +16,5 @@ foreach ($entry in $pathEntries) {
 $newPath = $newPathEntries -join ';'
 $newPath = $newPath + ';' + $currentPath + $excludePath1 + ';' + $currentPath + $excludePath2
 [Environment]::SetEnvironmentVariable('Path', $newPath, [System.EnvironmentVariableTarget]::Machine)
-Write-Output "The new PATH is: $newPath"
+# Write-Output "The new PATH is: $newPath"
 
