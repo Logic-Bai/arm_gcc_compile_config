@@ -86,8 +86,8 @@ target_device_startup
 )
 
 set (commands_create_output
-COMMAND arm-none-eabi-strip     ARGS    ${EXECUTABLE} -s -o ${TARGET_NAME}_release.elf
-COMMAND arm-none-eabi-objcopy   ARGS    -O binary ${TARGET_NAME}_release.elf ${TARGET_NAME}.bin
+COMMAND ${TOOLCHAIN_BIN_DIR}/${TOOLCHAIN}-strip${TOOLCHAIN_EXT}     ARGS    ${EXECUTABLE} -s -o ${TARGET_NAME}_release.elf
+COMMAND ${TOOLCHAIN_BIN_DIR}/${TOOLCHAIN}-objcopy${TOOLCHAIN_EXT}   ARGS    -O binary ${TARGET_NAME}_release.elf ${TARGET_NAME}.bin
 )
 
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/tools/pad_byte.exe AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/tools/merge_hex.exe)
