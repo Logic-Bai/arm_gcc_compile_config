@@ -1,0 +1,3 @@
+#define demo_project_VERSION_MAJOR @demo_project_VERSION_MAJOR@
+#define demo_project_VERSION_MINOR @demo_project_VERSION_MINOR@
+#define demo_project_VERSION_PATCH @demo_project_VERSION_PATCH@
