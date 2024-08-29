@@ -82,7 +82,7 @@ add_executable(${EXECUTABLE} ${__PROJECT_SRC_FILES} ${BINARY_FILE_OBJ})
 target_compile_options(${EXECUTABLE} PRIVATE ${__project_compile_option})
 
 target_link_libraries(${EXECUTABLE}
-target_device_startup
+target_device_asm
 )
 
 set (commands_create_output

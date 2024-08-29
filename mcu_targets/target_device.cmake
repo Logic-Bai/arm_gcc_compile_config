@@ -6,17 +6,22 @@ SET (TARGET_DEVICE_COMMON_COMPILE_OPT
 
 enable_language(ASM)
 
-set(STARTUP_COMPILE_OPTION
+set(ASM_COMPILE_OPTION
     -x
     assembler-with-cpp
 )
 
-add_library(target_device_startup STATIC
-    ${TARGET_DEVICE_STARTUP_FILE}
+add_library(target_device_asm STATIC
+    ${ASM_FILES}
 )
 
-target_compile_options(target_device_startup PRIVATE
-    ${STARTUP_COMPILE_OPTION}
+include_directories(target_device_asm
+    ${PROJECT_BINARY_DIR}
+    ${__PROJECT_HEAD_DIRECTORIES}
+)
+
+target_compile_options(target_device_asm PRIVATE
+    ${ASM_COMPILE_OPTION}
     ${TARGET_DEVICE_COMMON_COMPILE_OPT}
     ${TARGET_DEVICE_COMPILE_OPT}
     "-Og"
@@ -24,19 +29,6 @@ target_compile_options(target_device_startup PRIVATE
     "-g"
     "-gdwarf-2"
 )
-
-# add_library(target_device_syscalls STATIC
-#     ${CMAKE_CURRENT_LIST_DIR}/system/syscalls.c
-# )
-
-# target_compile_options(target_device_startup PRIVATE
-#     ${TARGET_DEVICE_COMMON_COMPILE_OPT}
-#     ${TARGET_DEVICE_COMPILE_OPT}
-#     "-Og"
-#     "-Wall"
-#     "-g"
-#     "-gdwarf-2"
-# )
 
 list(APPEND __PROJECT_SRC_FILES
     ${CMAKE_CURRENT_LIST_DIR}/system/syscalls.c
