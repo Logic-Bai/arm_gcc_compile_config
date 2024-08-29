@@ -16,10 +16,10 @@ if not exist %expected_file% (
 )
 
 if exist "%download_file%" (
-    echo File downloaded successfully.
+   echo File downloaded successfully.
 ) else (
-    echo File download failed.
-    exit /b 1
+   echo File download failed.
+   goto :endlocal
 )
 
 for /f %%i in ('powershell -Command "Get-FileHash -Path '%download_file%' -Algorithm SHA256 | Select-Object -ExpandProperty Hash"') do set "calculated_hash=%%i"
@@ -28,13 +28,12 @@ if /i "%calculated_hash%"=="%expected_hash%" (
    echo The SHA-256 hash matches.
    powershell -Command "Expand-Archive '%download_file%' -DestinationPath ./"
    echo File extracted successfully.
-   exit /b 0
 ) else (
    echo The SHA-256 hash does not match.
 
    del "%download_file%"
    echo File deleted due to hash mismatch.
-   exit /b 1
+   goto :endlocal
 )
 
 
@@ -47,6 +46,6 @@ setx /m arm_gcc_compile_config %arm_gcc_compile_config_path%
 
 powershell -NoProfile -ExecutionPolicy Bypass -File "arm_gcc_compile_config_required_tools\add_make.ps1"
 
-endlocal
+:endlocal
 
 pause
