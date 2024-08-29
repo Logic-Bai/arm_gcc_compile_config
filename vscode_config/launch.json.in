@@ -9,7 +9,7 @@
             "type":"cppdbg",
             "request": "launch",
             "targetArchitecture": "arm",
-            "program": "@EXECUTABLE_FULL_PATH@",
+            "program": "@EXECUTABLE_FULL_PATH@",@CUSTOM_VSCODE_LAUNCH_ARGS@
             "args": [],
             "cwd": "${workspaceFolder}",
             "environment": [],

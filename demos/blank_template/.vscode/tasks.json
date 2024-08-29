@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "preLaunchTask",
+        "type": "shell",
+        "command": "JLinkGDBServerCL.exe",
+        "args": [
+            "-select", "USB=0",
+            "-device", "GD32F470VG",
+            "-endian", "little",
+            "-if", "SWD",
+            "-speed", "6000",
+            "-noir", "-LocalhostOnly", "-nologtofile",
+            "-port", "2331",
+            "-SWOPort", "2332",
+            "-TelnetPort", "2333",
+            "-singlerun"
+        ],
+        "isBackground": true,
+        "problemMatcher": [],
+        "presentation": {
+            "showReuseMessage": false,
+            "close": true,
+            "clear": true
+        }
+      }
+    ]
+  }
