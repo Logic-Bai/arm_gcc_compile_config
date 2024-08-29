@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools",
+        "twxs.cmake",
+        "ms-vscode.cmake-tools",
+        "mcu-debug.memory-view",
+        "mcu-debug.peripheral-viewer"
+    ]
+}
